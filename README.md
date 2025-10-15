@@ -108,9 +108,21 @@ terraform destroy
 ```
 
 ## Security Notes
-- The NSG allows SSH access from any IP address (`0.0.0.0/0`). Consider restricting this to specific IP ranges for production use.
-- The `terraform.tfvars` file is excluded from git to prevent committing sensitive data.
-- Always use SSH keys instead of passwords for VM authentication.
+
+⚠️ **Important Security Considerations:**
+
+- **SSH Access**: The NSG allows SSH access from any IP address (`0.0.0.0/0`) as specified in the requirements. For production environments, you should:
+  - Restrict the `source_address_prefix` in the NSG rule to your specific IP range or corporate network
+  - Consider using Azure Bastion for more secure access
+  - Implement additional security controls like fail2ban or SSH key restrictions
+  
+- **SSH Authentication**: This template uses SSH key authentication only (passwords are not enabled). Always protect your private SSH keys.
+
+- **Sensitive Data**: The `terraform.tfvars` file is excluded from git to prevent committing sensitive data like SSH keys.
+
+- **Basic SKU**: The template uses Basic SKU for the public IP as specified for a simple development environment. For production workloads, consider Standard SKU for better SLA and features.
+
+- **No Availability Zones**: This is a standalone server deployment without high availability. For production workloads, consider using availability zones or availability sets.
 
 ## License
 This project is provided as-is for educational and development purposes.

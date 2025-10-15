@@ -32,6 +32,11 @@ variable "admin_ssh_key" {
   description = "SSH public key for VM access"
   type        = string
   sensitive   = true
+  
+  validation {
+    condition     = can(regex("^(ssh-rsa|ssh-ed25519|ecdsa-sha2-nistp256|ecdsa-sha2-nistp384|ecdsa-sha2-nistp521) ", var.admin_ssh_key))
+    error_message = "The admin_ssh_key must be a valid SSH public key starting with ssh-rsa, ssh-ed25519, or ecdsa-sha2-."
+  }
 }
 
 variable "vm_size" {
