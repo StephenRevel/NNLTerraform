@@ -1,0 +1,26 @@
+# Example terraform.tfvars file
+# Copy this file to terraform.tfvars and fill in your values
+
+# Resource Group name (must already exist)
+# resource_group_name = "nonamelab_RG"
+
+# Azure region
+# location = "westus3"
+
+# Virtual network name (must already exist)
+# vnet_name = "nnlvnet_westus"
+
+# Virtual machine name
+# vm_name = "nnl-ubuntu-vm"
+
+# Admin username for the VM
+# admin_username = "azureuser"
+
+# SSH public key for VM access (REQUIRED)
+# admin_ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC... your-email@example.com"
+
+# VM size
+# vm_size = "Standard_B2s"
+
+# Subnet address prefix (must not overlap with existing subnets in the virtual network)
+# subnet_address_prefix = "10.0.1.0/24"
